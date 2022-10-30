@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { getList, deleteUser } from "../../api";
+import { getList, deleteUser as _deleteUser } from "../../api";
 import UserSaveForm from "./slices/UserSaveForm.vue";
 
 const loading = ref(true);
@@ -26,12 +26,12 @@ function onClose() {
   selectedUser.value = null;
 }
 
-async function _deleteUser(id) {
+async function deleteUser(id) {
   if (id) {
     try {
       loading.value = true;
       users.value = await new Promise((resolve) => {
-        setTimeout(() => resolve(deleteUser(id)), 50);
+        setTimeout(() => resolve(_deleteUser(id)), 50);
       });
     } catch (error) {
       alert(error.message);
@@ -95,7 +95,7 @@ fetch();
               >
                 Редактировать
               </button>
-              <button type="button" @click="_deleteUser(user.id)">
+              <button type="button" @click="deleteUser(user.id)">
                 Удалить
               </button>
             </div>
