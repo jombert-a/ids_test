@@ -1,0 +1,13 @@
+.flex-list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mb {
+  margin-bottom: 2rem;
+}
+
+.mb-small {
+  margin-bottom: 0.5rem;
+}
